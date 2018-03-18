@@ -26,11 +26,12 @@
         <result column="user_type" property="userType" />
         <result column="salt" property="salt" />
         <result column="encry_qty" property="encryQty" />
+        <result column="app_id" property="appId" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, login_name AS loginName, login_password AS loginPassword, nick_name AS nickName, real_name AS realName, head_icon AS headIcon, department_id AS departmentId, region_id AS regionId, create_time AS createTime, update_time AS updateTime, create_user AS createUser, update_user AS updateUser, status, email, id_no AS idNo, job_id AS jobId, phone, license_type AS licenseType, sex, user_type AS userType, salt, encry_qty AS encryQty
+        id, login_name AS loginName, login_password AS loginPassword, nick_name AS nickName, real_name AS realName, head_icon AS headIcon, department_id AS departmentId, region_id AS regionId, create_time AS createTime, update_time AS updateTime, create_user AS createUser, update_user AS updateUser, status, email, id_no AS idNo, job_id AS jobId, phone, license_type AS licenseType, sex, user_type AS userType, salt, encry_qty AS encryQty, app_id AS appId
     </sql>
 
 </mapper>

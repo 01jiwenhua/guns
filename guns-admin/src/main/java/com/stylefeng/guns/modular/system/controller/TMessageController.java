@@ -1,6 +1,12 @@
 package com.stylefeng.guns.modular.system.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.stylefeng.guns.core.base.controller.BaseController;
+import com.stylefeng.guns.core.util.ToolUtil;
+import com.stylefeng.guns.modular.system.model.TUser;
+import com.stylefeng.guns.modular.system.service.GeTuiService;
+import com.stylefeng.guns.modular.system.service.ITUserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -11,6 +17,10 @@ import com.stylefeng.guns.core.log.LogObjectHolder;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.stylefeng.guns.modular.system.model.TMessage;
 import com.stylefeng.guns.modular.system.service.ITMessageService;
+
+import java.sql.Wrapper;
+import java.util.Date;
+import java.util.List;
 
 /**
  * 客户端消息管理控制器
@@ -26,6 +36,10 @@ public class TMessageController extends BaseController {
 
     @Autowired
     private ITMessageService tMessageService;
+    @Autowired
+    private GeTuiService geTuiService;
+    @Autowired
+    private ITUserService tUserService;
 
     /**
      * 跳转到客户端消息管理首页
@@ -49,7 +63,7 @@ public class TMessageController extends BaseController {
     @RequestMapping("/tMessage_update/{tMessageId}")
     public String tMessageUpdate(@PathVariable Integer tMessageId, Model model) {
         TMessage tMessage = tMessageService.selectById(tMessageId);
-        model.addAttribute("item",tMessage);
+        model.addAttribute("item", tMessage);
         LogObjectHolder.me().set(tMessage);
         return PREFIX + "tMessage_edit.html";
     }
@@ -69,7 +83,16 @@ public class TMessageController extends BaseController {
     @RequestMapping(value = "/add")
     @ResponseBody
     public Object add(TMessage tMessage) {
+        tMessage.setPublishTime(new Date());
         tMessageService.insert(tMessage);
+        String message = JSON.toJSONString(tMessage);
+        EntityWrapper<TUser> tUserEntityWrapper = new EntityWrapper<>();
+        tUserEntityWrapper.isNotNull("app_id");
+        List<TUser> users = tUserService.selectList(tUserEntityWrapper);
+        for (TUser user : users) {
+
+            geTuiService.push(message, user.getAppId());
+        }
         return SUCCESS_TIP;
     }
 
