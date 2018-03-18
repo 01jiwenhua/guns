@@ -15,7 +15,7 @@ import com.stylefeng.guns.modular.system.service.ITUserService;
 /**
  * 客户端用户管理控制器
  *
- * @author fengshuonan
+ * @author wangzy
  * @Date 2018-03-18 13:04:05
  */
 @Controller
