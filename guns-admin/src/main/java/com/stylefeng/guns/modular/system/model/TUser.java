@@ -65,6 +65,8 @@ public class TUser extends Model<TUser> {
     private String salt;
     @TableField("encry_qty")
     private Integer encryQty;
+    @TableField("app_id")
+    private String appId;
 
 
     public Integer getId() {
@@ -243,6 +245,14 @@ public class TUser extends Model<TUser> {
         this.encryQty = encryQty;
     }
 
+    public String getAppId() {
+        return appId;
+    }
+
+    public void setAppId(String appId) {
+        this.appId = appId;
+    }
+
     @Override
     protected Serializable pkVal() {
         return this.id;
@@ -273,6 +283,7 @@ public class TUser extends Model<TUser> {
         ", userType=" + userType +
         ", salt=" + salt +
         ", encryQty=" + encryQty +
+        ", appId=" + appId +
         "}";
     }
 }
