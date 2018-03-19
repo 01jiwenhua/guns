@@ -2,16 +2,18 @@ package com.stylefeng.guns.modular.system.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.stylefeng.guns.core.base.controller.BaseController;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.stylefeng.guns.core.log.LogObjectHolder;
-import org.springframework.web.bind.annotation.RequestParam;
 import com.stylefeng.guns.modular.system.model.TUser;
 import com.stylefeng.guns.modular.system.service.ITUserService;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * 客户端用户管理控制器
@@ -24,6 +26,13 @@ import com.stylefeng.guns.modular.system.service.ITUserService;
 public class TUserController extends BaseController {
 
     private String PREFIX = "/system/tUser/";
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        dateFormat.setLenient(false);
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+    }
 
     @Autowired
     private ITUserService tUserService;
@@ -125,5 +134,15 @@ public class TUserController extends BaseController {
         tUser.setStatus(status);
         tUserService.update(tUser, tUserEntityWrapper);
         return tUserService.selectById(tUserId);
+    }
+
+
+    public static void main(String args){
+
+        String timeStr = "2018-3-19";
+//        Date timeDate = new Date(1521417600000);
+        Date timeDates = new Date(1403149534);
+
+        System.out.println();
     }
 }

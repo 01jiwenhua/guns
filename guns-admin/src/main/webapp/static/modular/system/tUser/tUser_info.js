@@ -105,6 +105,15 @@ TUserInfoDlg.editSubmit = function() {
     },function(data){
         Feng.error("修改失败!" + data.responseJSON.message + "!");
     });
+/*
+
+    console.log(this.tUserInfoData);
+    //时间转化
+    this.tUserInfoData.createTime = Date.parse(new Date(this.tUserInfoData.createTime));
+    this.tUserInfoData.updateTime = Date.parse(new Date(this.tUserInfoData.updateTime));
+    console.log(this.tUserInfoData);
+*/
+
     ajax.set(this.tUserInfoData);
     ajax.start();
 }
