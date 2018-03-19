@@ -27,7 +27,10 @@
                                 <#button name="删除" icon="fa-remove" clickFun="TUser.delete()" space="true"/>
                             @}
                             @if(shiro.hasPermission("/tUser/update")){
-                            <#button name="审核" icon="fa-edit" clickFun="TUser.openCheck()" space="true"/>
+                            <#button name="审核通过" icon="fa-edit" clickFun="TUser.audit(1)" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/tUser/update")){
+                            <#button name="审核不通过" icon="fa-edit" clickFun="TUser.audit(0)" space="true"/>
                             @}
                         </div>
                         <#table id="TUserTable"/>

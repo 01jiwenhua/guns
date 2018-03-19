@@ -1,5 +1,6 @@
 package com.stylefeng.guns.modular.system.controller;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.stylefeng.guns.core.base.controller.BaseController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -109,6 +110,20 @@ public class TUserController extends BaseController {
     @RequestMapping(value = "/detail/{tUserId}")
     @ResponseBody
     public Object detail(@PathVariable("tUserId") Integer tUserId) {
+        return tUserService.selectById(tUserId);
+    }
+    /**
+     *
+     * 客户端用户审核
+     */
+    @RequestMapping(value = "/audit")
+    @ResponseBody
+    public Object audit(@RequestParam Integer tUserId, @RequestParam Integer status) {
+        EntityWrapper<TUser> tUserEntityWrapper = new EntityWrapper<>();
+        tUserEntityWrapper.eq("id", tUserId);
+        TUser tUser = new TUser();
+        tUser.setStatus(status);
+        tUserService.update(tUser, tUserEntityWrapper);
         return tUserService.selectById(tUserId);
     }
 }

@@ -110,6 +110,22 @@ TUser.delete = function () {
         ajax.start();
     }
 };
+/**
+ * 审核用户
+ */
+TUser.audit = function (status) {
+    if (this.check()) {
+        var ajax = new $ax(Feng.ctxPath + "/tUser/audit", function (data) {
+            Feng.success("操作成功!");
+            TUser.table.refresh();
+        }, function (data) {
+            Feng.error("操作失败!" + data.responseJSON.message + "!");
+        });
+        ajax.set("tUserId",this.seItem.id);
+        ajax.set("status", status);
+        ajax.start();
+    }
+};
 
 /**
  * 查询客户端用户管理列表

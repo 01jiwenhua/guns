@@ -90,6 +90,8 @@ public class TMessageController extends BaseController {
         tUserEntityWrapper.isNotNull("app_id");
         List<TUser> users = tUserService.selectList(tUserEntityWrapper);
         for (TUser user : users) {
+            System.out.println("!!!!!!!!!!!" + message);
+            System.out.println("!!!!!!!!!!!" + user.getAppId());
 
             geTuiService.push(message, user.getAppId());
         }
