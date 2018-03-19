@@ -15,6 +15,9 @@ import com.stylefeng.guns.modular.system.service.ITUserService;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * 客户端用户管理控制器
  *
@@ -80,7 +83,9 @@ public class TUserController extends BaseController {
     @RequestMapping(value = "/list")
     @ResponseBody
     public Object list(String condition) {
-        return tUserService.selectList(null);
+        List<Map<String, Object>> userList = tUserService.getUserList();
+        System.out.println(userList.toString());
+        return userList;
     }
 
     /**
@@ -134,15 +139,5 @@ public class TUserController extends BaseController {
         tUser.setStatus(status);
         tUserService.update(tUser, tUserEntityWrapper);
         return tUserService.selectById(tUserId);
-    }
-
-
-    public static void main(String args){
-
-        String timeStr = "2018-3-19";
-//        Date timeDate = new Date(1521417600000);
-        Date timeDates = new Date(1403149534);
-
-        System.out.println();
     }
 }
