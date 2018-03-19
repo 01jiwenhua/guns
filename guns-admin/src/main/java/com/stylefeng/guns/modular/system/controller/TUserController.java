@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.stylefeng.guns.modular.system.model.TUser;
 import com.stylefeng.guns.modular.system.service.ITUserService;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * 客户端用户管理控制器
  *
@@ -71,7 +74,9 @@ public class TUserController extends BaseController {
     @RequestMapping(value = "/list")
     @ResponseBody
     public Object list(String condition) {
-        return tUserService.selectList(null);
+        List<Map<String, Object>> userList = tUserService.getUserList();
+        System.out.println(userList.toString());
+        return userList;
     }
 
     /**
