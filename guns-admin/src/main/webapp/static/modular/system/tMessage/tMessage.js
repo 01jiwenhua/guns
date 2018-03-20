@@ -17,7 +17,15 @@ TMessage.initColumn = function () {
             {title: 'id', field: 'id', visible: true, align: 'center', valign: 'middle'},
             {title: '消息标题', field: 'title', visible: true, align: 'center', valign: 'middle'},
             {title: '消息内容', field: 'content', visible: true, align: 'center', valign: 'middle'},
-            {title: '消息类型', field: 'type', visible: true, align: 'center', valign: 'middle'},
+            {title: '消息类型', field: 'type', visible: true, align: 'center', valign: 'middle', formatter : function (value, row, index) {
+                    if (row['type'] === 1) {
+                        return '系统消息';
+                    }
+                    if (row['type'] === 2) {
+                        return '工作通知';
+                    }
+                    return value;
+                }},
             {title: '发布时间', field: 'publishTime', visible: true, align: 'center', valign: 'middle'},
             {title: '发布机构', field: 'publishOrg', visible: true, align: 'center', valign: 'middle'},
             {title: '发布部门', field: 'publishDepartment', visible: true, align: 'center', valign: 'middle'},
