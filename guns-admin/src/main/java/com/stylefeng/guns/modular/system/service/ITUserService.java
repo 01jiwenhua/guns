@@ -16,6 +16,6 @@ import java.util.Map;
  * @since 2018-03-18
  */
 public interface ITUserService extends IService<TUser> {
-    List<Map<String, Object>> getUserList();
+    List<Map<String, Object>> getUserList(String phone);
 
 }

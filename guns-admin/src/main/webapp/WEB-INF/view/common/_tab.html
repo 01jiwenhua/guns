@@ -4,17 +4,12 @@
     <div class="sidebar-collapse">
         <ul class="nav" id="side-menu">
             <li class="nav-header">
-                <div class="dropdown profile-element">
-                    <span><img alt="image" class="img-circle"
-                               @if(isEmpty(avatar)){
-                                    src="${ctxPath}/static/img/ic_logo"
-                               @}else{
-                                    src="${ctxPath}/kaptcha/${avatar}"
-                               @}
-                               width="64px" height="64px"/></span>
+                <div class="dropdown profile-element" style="text-align: center">
+
+                    <img  src="${ctxPath}/static/img/ic_logo.png" style="text-align: center" height="60" width="60"/>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <span class="clear">
-                       <span class="block m-t-xs"><strong class="font-bold">${shiro.getUser().name}</strong></span>
+                       <span class="block m-t-xs" ><strong class="font-bold">${shiro.getUser().name}</strong></span>
                         <span class="text-muted text-xs block">${shiro.getUser().roleNames[0]}<b class="caret"></b></span>
                         </span>
                     </a>

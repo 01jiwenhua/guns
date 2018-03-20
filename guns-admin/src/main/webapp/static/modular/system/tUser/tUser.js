@@ -11,23 +11,31 @@ var TUser = {
 /**
  * 初始化表格的列
  */
+function onGenderRenderer(e) {
+    var Genders = [ {id : 0, text : '待审核'}, {id : 1, text : '审核通过'}];
+    for ( var i = 0, l = Genders.length; i < l; i++) {
+        var g = Genders[i];
+        if (g.id == e.value)
+            return g.text;
+    }
+    return '待审核';
+}
 TUser.initColumn = function () {
     return [
-        {field: 'selectItem', radio: true},
-            {title: '用户', field: 'id', visible: true, align: 'center', valign: 'middle'},
-            {title: '登录名称', field: 'loginName', visible: true, align: 'center', valign: 'middle'},
-            {title: '昵称', field: 'nickName', visible: true, align: 'center', valign: 'middle'},
+            {field: 'selectItem', radio: true},
+            {title: '用户id', field: 'id', visible: true, align: 'center', valign: 'middle'},
+            {title: '登录名称', field: 'phone', visible: true, align: 'center', valign: 'middle'},
             {title: '真实姓名', field: 'realName', visible: true, align: 'center', valign: 'middle'},
-            {title: '部门', field: 'departmentId', visible: true, align: 'center', valign: 'middle'},
-            {title: '所在地区', field: 'regionId', visible: true, align: 'center', valign: 'middle'},
-            {title: '创建时间', field: 'createTime', visible: true, align: 'center', valign: 'middle'},
-            {title: '状态', field: 'status', visible: true, align: 'center', valign: 'middle'},
+            {title: '部门', field: 'departmentName', visible: true, align: 'center', valign: 'middle'},
+            {title: '所在地区', field: 'regionName', visible: true, align: 'center', valign: 'middle'},
+            {title: '状态', field: 'statusName', visible: true, align: 'center', valign: 'middle'},
             {title: '邮箱', field: 'email', visible: true, align: 'center', valign: 'middle'},
+            {title: '证件类型', field: 'licenseTypeName', visible: true, align: 'center', valign: 'middle'},
             {title: '身份证号', field: 'idNo', visible: true, align: 'center', valign: 'middle'},
-            {title: '职务', field: 'jobId', visible: true, align: 'center', valign: 'middle'},
+            {title: '职务', field: 'jobName', visible: true, align: 'center', valign: 'middle'},
             {title: '联系方式', field: 'phone', visible: true, align: 'center', valign: 'middle'},
-            {title: '证件类型', field: 'licenseType', visible: true, align: 'center', valign: 'middle'},
-            {title: '性别', field: 'sex', visible: true, align: 'center', valign: 'middle'},
+            {title: '性别', field: 'sexName', visible: true, align: 'center', valign: 'middle'},
+            {title: '创建时间', field: 'createTime', visible: true, align: 'center', valign: 'middle'},
 
     ];
 };

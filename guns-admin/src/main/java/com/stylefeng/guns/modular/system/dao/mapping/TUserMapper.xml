@@ -26,34 +26,63 @@
         <result column="user_type" property="userType"/>
         <result column="salt" property="salt"/>
         <result column="encry_qty" property="encryQty"/>
-        <!--<result column="app_id" property="appId"/>-->
+
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id,
-        login_name AS loginName,
-        login_password AS loginPassword,
-        nick_name AS nickName,
-        real_name AS realName,
-        head_icon AS headIcon,
-        (select name from t_department where id = department_id) AS departmentId,
-        (select name from t_region where id = region_id)AS regionId,
-        create_time AS createTime,
-        update_time AS updateTime,
-        create_user AS createUser,
-        update_user AS updateUser,
-        status,
-        email,
-        id_no AS idNo,
-        job_id AS jobId,
-        phone,
-        license_type AS licenseType,
-        sex,
-        user_type AS userType,
-        salt,
-        encry_qty AS encryQty
---         app_id AS appId
-    </sql>
 
+	id,
+	login_name AS loginName,
+	login_password AS loginPassword,
+	nick_name AS nickName,
+	real_name AS realName,
+	head_icon AS headIcon,
+	(
+		SELECT
+			NAME
+		FROM
+			t_department
+		WHERE
+			id = department_id
+	) AS departmentName,
+	department_id AS departmentId,
+	(
+		SELECT
+			NAME
+		FROM
+			t_region
+		WHERE
+			id = region_id
+	) AS regionName,
+	region_id AS regionId,
+	create_time AS createTime,
+	update_time AS updateTime,
+	create_user AS createUser,
+	update_user AS updateUser,
+	`status`,
+	(SELECT name FROM t_basic_data b WHERE t_user.status=b.code AND b.category_code= 'check_status' ) as statusName,
+	email,
+	id_no AS idNo,
+	job_id AS jobId,
+	(SELECT name FROM t_job WHERE id=job_id) AS jobName,
+	phone,
+	license_type AS licenseType,
+	(SELECT name FROM t_basic_data b WHERE license_type=b.code AND b.category_code= 'id_type' ) as licenseTypeName,
+	sex,
+(SELECT name FROM t_basic_data b WHERE sex=b.code AND b.category_code= 'b_sex' ) AS sexName,
+	user_type AS userType,
+	salt,
+	encry_qty AS encryQty
+    </sql>
+    <select id="selectAllUser" resultType="map">
+        select
+        <include refid="Base_Column_List"/>
+        from t_user
+        WHERE 1=1
+        <if test="phone != null">
+            AND phone like '%${phone}%'
+        </if>
+        order by status ASC
+    </select>
 </mapper>

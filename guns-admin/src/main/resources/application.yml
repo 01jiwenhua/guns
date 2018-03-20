@@ -30,7 +30,7 @@ spring:
     port: 6379
     password:
   profiles:
-    active: release
+    active: prd
   mvc:
     static-path-pattern: /static/**
     view:

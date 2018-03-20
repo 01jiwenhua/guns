@@ -83,10 +83,10 @@ public class TUserController extends BaseController {
     @RequestMapping(value = "/list")
     @ResponseBody
     public Object list(String condition) {
-        return tUserService.selectList(null);
-//        List<Map<String, Object>> userList = tUserService.getUserList();
-//        System.out.println(userList.toString());
-//        return userList;
+//        return tUserService.selectList(null);
+        List<Map<String, Object>> userList = tUserService.getUserList(condition);
+        System.out.println(userList.toString());
+        return userList;
     }
 
     /**

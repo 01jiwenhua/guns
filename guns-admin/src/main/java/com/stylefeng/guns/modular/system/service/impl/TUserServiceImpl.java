@@ -24,7 +24,7 @@ public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements
     TUserMapper tUserMapper;
 
     @Override
-    public List<Map<String, Object>> getUserList() {
-        return tUserMapper.selectAllUser();
+    public List<Map<String, Object>> getUserList(String phone) {
+        return tUserMapper.selectAllUser(phone);
     }
 }

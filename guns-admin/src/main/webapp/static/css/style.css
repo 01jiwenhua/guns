@@ -4306,6 +4306,7 @@ table.table-mail tr td {
 
 .text-muted {
     color: #888888;
+    text-align: center;
 }
 
 .simple_tag {
@@ -4528,6 +4529,7 @@ a.close-canvas-menu:hover {
 
 .m-t-xs {
     margin-top: 5px;
+    text-align: center;
 }
 
 .m-t-sm {
