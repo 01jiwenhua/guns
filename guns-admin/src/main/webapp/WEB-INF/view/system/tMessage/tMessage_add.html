@@ -9,12 +9,21 @@
                 <div class="col-sm-6 b-r">
                             <#input id="title" name="消息标题" underline="true"/>
                             <#input id="content" name="消息内容" underline="true"/>
-                            <#input id="type" name="消息类型1：系统消息，2：工作通知" underline="true"/>
+                            <#select id="type" name="消息类型" underline="true">
+                                <option value="1">系统消息</option>
+                                <option value="2">工作通知</option>
+                            </#select>
                 </div>
 
                 <div class="col-sm-6">
-                            <#input id="publishOrg" name="发布机构" underline="true"/>
-                            <#input id="publishDepartment" name="发布部门" underline="true"/>
+                            <#select id="publishOrg" name="发布机构" underline="true">
+                                <option value="北京市安全生产监督管理局">北京市安全生产监督管理局</option>
+                             </#select>
+                            <#select id="publishDepartment" name="发布部门" underline="true">
+                                <option value="安全监督管理一处">安全监督管理一处</option>
+                                <option value="安全监督管理二处(新机场建设安全生产监管处)">安全监督管理二处(新机场建设安全生产监管处)</option>
+                                <option value="安全监督管理三处">安全监督管理三处</option>
+                             </#select>
                             <!--<#input id="status" name="" underline="true"/>-->
                 </div>
             </div>

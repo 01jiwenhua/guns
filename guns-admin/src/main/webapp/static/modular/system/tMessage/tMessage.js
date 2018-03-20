@@ -21,7 +21,6 @@ TMessage.initColumn = function () {
             {title: '发布时间', field: 'publishTime', visible: true, align: 'center', valign: 'middle'},
             {title: '发布机构', field: 'publishOrg', visible: true, align: 'center', valign: 'middle'},
             {title: '发布部门', field: 'publishDepartment', visible: true, align: 'center', valign: 'middle'},
-            {title: '状态', field: 'status', visible: true, align: 'center', valign: 'middle'}
     ];
 };
 
