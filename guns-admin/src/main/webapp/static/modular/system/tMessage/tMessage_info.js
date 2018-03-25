@@ -2,7 +2,17 @@
  * 初始化客户端消息管理详情对话框
  */
 var TMessageInfoDlg = {
-    tMessageInfoData : {}
+    tMessageInfoData : {},
+    editor: null,
+    validateFields: {
+        title: {
+            validators: {
+                notEmpty: {
+                    message: '标题不能为空'
+                }
+            }
+        }
+    }
 };
 
 /**
@@ -44,10 +54,11 @@ TMessageInfoDlg.close = function() {
  * 收集数据
  */
 TMessageInfoDlg.collectData = function() {
+    this.tMessageInfoData['content'] = TMessageInfoDlg.editor.txt.text();
     this
     .set('id')
     .set('title')
-    .set('content')
+    // .set('content')
     .set('type')
     .set('url')
     .set('publishTime')
@@ -96,6 +107,16 @@ TMessageInfoDlg.editSubmit = function() {
     ajax.start();
 }
 
-$(function() {
+$(function () {
+    Feng.initValidator("messageInfoForm", TMessageInfoDlg.validateFields);
 
+    //初始化编辑器
+    var E = window.wangEditor;
+    var editor = new E('#editor');
+    editor.customConfig.menus = [
+
+    ]
+    editor.create();
+    editor.txt.html($("#contentVal").val());
+    TMessageInfoDlg.editor = editor;
 });

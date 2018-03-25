@@ -8,18 +8,6 @@ var TUser = {
     layerIndex: -1
 };
 
-/**
- * 初始化表格的列
- */
-function onGenderRenderer(e) {
-    var Genders = [ {id : 0, text : '待审核'}, {id : 1, text : '审核通过'}];
-    for ( var i = 0, l = Genders.length; i < l; i++) {
-        var g = Genders[i];
-        if (g.id == e.value)
-            return g.text;
-    }
-    return '待审核';
-}
 TUser.initColumn = function () {
     return [
             {field: 'selectItem', radio: true},

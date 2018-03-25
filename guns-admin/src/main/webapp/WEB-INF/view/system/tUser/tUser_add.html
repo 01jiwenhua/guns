@@ -7,31 +7,42 @@
 
             <div class="row">
                 <div class="col-sm-6 b-r">
-                            <#input id="id" name="用户id" underline="true"/>
                             <#input id="loginName" name="登录名" underline="true"/>
-                            <#input id="loginPassword" name="密码" underline="true"/>
                             <#input id="nickName" name="昵称" underline="true"/>
                             <#input id="realName" name="真实姓名" underline="true"/>
-                            <#input id="headIcon" name="头像" underline="true"/>
-                            <#input id="departmentId" name="部门ID" underline="true"/>
-                            <#input id="regionId" name="地区ID" underline="true"/>
-                            <#input id="createTime" name="创建时间" underline="true"/>
-                            <#input id="updateTime" name="修改时间" underline="true"/>
-                            <#input id="createUser" name="创建人"/>
+                            <#select id="departmentId" name="部门" underline="true">
+                                <option value="1">安全监督管理一处</option>
+                                <option value="2">安全监督管理二处(新机场建设安全生产监管处)</option>
+                                <option value="3">安全监督管理三处</option>
+                            </#select>
+                            <#select id="regionId" name="地区" underline="true">
+                                <option value="1">北京</option>
+                            </#select>
+                            <#select id="status" name="用户状态" underline="true">
+                                <option value="-1">被拒</option>
+                                <option value="0">待审核</option>
+                                <option value="1">审核通过</option>
+                            </#select>
                 </div>
 
                 <div class="col-sm-6">
-                            <#input id="updateUser" name="修改人" underline="true"/>
-                            <#input id="status" name="-1：无效，0:审核中，1审核通过" underline="true"/>
+
                             <#input id="email" name="电子邮件" underline="true"/>
-                            <#input id="idNo" name="idNo" underline="true"/>
-                            <#input id="jobId" name="jobId" underline="true"/>
+                            <#input id="idNo" name="证件号" underline="true"/>
+                            <#select id="licenseType" name="证件类型" underline="true">
+                                <option value="1">身份证</option>
+                            </#select>
+                            <#select id="jobId" name="职务" underline="true">
+                                <option value="1">处长</option>
+                                <option value="2">科长</option>
+                                <option value="3">科员</option>
+                            </#select>
                             <#input id="phone" name="电话" underline="true"/>
-                            <#input id="licenseType" name="license类型" underline="true"/>
-                            <#input id="sex" name="性别" underline="true"/>
-                            <#input id="userType" name="用户类型" underline="true"/>
-                            <#input id="salt" name="salt" underline="true"/>
-                            <#input id="encryQty" name="encryQty" underline="true"/>
+
+                            <#select id="sex" name="性别" underline="true">
+                                <option value="0">女</option>
+                                <option value="1">男</option>
+                            </#select>
                 </div>
             </div>
 

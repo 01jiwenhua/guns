@@ -2,6 +2,7 @@ package com.stylefeng.guns.modular.system.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.stylefeng.guns.core.base.controller.BaseController;
 import com.stylefeng.guns.core.util.ToolUtil;
 import com.stylefeng.guns.modular.system.model.TUser;
@@ -18,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.stylefeng.guns.modular.system.model.TMessage;
 import com.stylefeng.guns.modular.system.service.ITMessageService;
 
-import java.sql.Wrapper;
 import java.util.Date;
 import java.util.List;
 
@@ -74,7 +74,14 @@ public class TMessageController extends BaseController {
     @RequestMapping(value = "/list")
     @ResponseBody
     public Object list(String condition) {
-        return tMessageService.selectList(null);
+        if(ToolUtil.isEmpty(condition)){
+            return tMessageService.selectList(null);
+        }else{
+            EntityWrapper<TMessage> entityWrapper=new EntityWrapper<>();
+            Wrapper<TMessage> wrapper=entityWrapper.like("content",condition);
+            return tMessageService.selectList(wrapper);
+        }
+
     }
 
     /**
@@ -84,6 +91,10 @@ public class TMessageController extends BaseController {
     @ResponseBody
     public Object add(TMessage tMessage) {
         tMessage.setPublishTime(new Date());
+        String publishDepartment=tMessage.getPublishDepartment()
+                .replace("& #40;","(")
+                .replace("& #41;",")");
+        tMessage.setPublishDepartment(publishDepartment);
         tMessageService.insert(tMessage);
         String message = JSON.toJSONString(tMessage);
         EntityWrapper<TUser> tUserEntityWrapper = new EntityWrapper<>();
@@ -111,6 +122,10 @@ public class TMessageController extends BaseController {
     @RequestMapping(value = "/update")
     @ResponseBody
     public Object update(TMessage tMessage) {
+        String publishDepartment=tMessage.getPublishDepartment()
+                .replace("& #40;","(")
+                .replace("& #41;",")");
+        tMessage.setPublishDepartment(publishDepartment);
         tMessageService.updateById(tMessage);
         return SUCCESS_TIP;
     }

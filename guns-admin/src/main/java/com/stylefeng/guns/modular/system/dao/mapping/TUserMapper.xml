@@ -83,6 +83,9 @@
         <if test="phone != null">
             AND phone like '%${phone}%'
         </if>
+		<if test="phone != null">
+			OR real_name like '%${phone}%'
+		</if>
         order by status ASC
     </select>
 </mapper>

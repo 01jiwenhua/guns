@@ -7,18 +7,28 @@
 
             <div class="row">
                 <div class="col-sm-6 b-r">
-                            <#input id="id" name="" value="${item.id}" underline="true"/>
-                            <#input id="title" name="" value="${item.title}" underline="true"/>
-                            <#input id="content" name="" value="${item.content}" underline="true"/>
-                            <#input id="type" name="1：系统消息，2：工作通知" value="${item.type}" underline="true"/>
-                            <#input id="url" name="url为空则不跳转为否则跳转html页" value="${item.url}" />
+                    <#input id="title" name="消息标题" alue="${item.title}" underline="true"/>
+                    <#select id="type" name="消息类型" underline="true">
+                    <option value="1">系统消息</option>
+                    <option value="2">工作通知</option>
+                </#select>
                 </div>
-
-                <div class="col-sm-6">
-                            <#input id="publishTime" name="" value="${item.publishTime}" underline="true"/>
-                            <#input id="publishOrg" name="" value="${item.publishOrg}" underline="true"/>
-                            <#input id="publishDepartment" name="" value="${item.publishDepartment}" underline="true"/>
-                            <#input id="status" name="" value="${item.status}" />
+                <div class="col-sm-6 b-r" >
+                    <#select id="publishOrg" name="发布机构" underline="true">
+                        <option value="北京市安全生产监督管理局">北京市安全生产监督管理局</option>
+                    </#select>
+                    <#select id="publishDepartment" name="发布部门" underline="true">
+                        <option value="安全监督管理一处">安全监督管理一处</option>
+                        <option value="安全监督管理二处&#40;新机场建设安全生产监管处&#41;">安全监督管理二处(新机场建设安全生产监管处)</option>
+                        <option value="安全监督管理三处">安全监督管理三处</option>
+                    </#select>
+                 </div>
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">内容</label>
+                    <div class="col-sm-11">
+                        <div id="editor" class="editorHeight">
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -33,4 +43,5 @@
     </div>
 </div>
 <script src="${ctxPath}/static/modular/system/tMessage/tMessage_info.js"></script>
+<script type="text/javascript" src="//unpkg.com/wangeditor/release/wangEditor.min.js"></script>
 @}
