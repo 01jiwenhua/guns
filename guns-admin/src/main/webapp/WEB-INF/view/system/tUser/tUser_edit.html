@@ -4,12 +4,15 @@
         <div class="form-horizontal">
 
             <input type="hidden" id="id" value="${item.id}">
-
+            <input type="hidden" id="sexName" value="${item.sex}">
+            <input type="hidden" id="departmentName" value="${item.departmentId}">
+            <input type="hidden" id="statusName" value="${item.status}">
+            <input type="hidden" id="jobName" value="${item.jobId}">
             <div class="row">
                 <div class="col-sm-6 b-r">
                             <#input id="loginName" name="登录名" value="${item.loginName}" underline="true"/>
                             <#input id="realName" name="真实姓名" value="${item.realName}" underline="true"/>
-                            <#select id="departmentId" name="部门" underline="true">
+                            <#select id="departmentId" name="部门" underline="true" >
                                 <option value="1">安全监督管理一处</option>
                                 <option value="2">安全监督管理二处(新机场建设安全生产监管处)</option>
                                 <option value="3">安全监督管理三处</option>
@@ -17,15 +20,16 @@
                             <#select id="regionId" name="地区" underline="true">
                                 <option value="1">北京</option>
                             </#select>
+                        <#select id="status" name="用户状态" underline="true">
+                            <option value="-1">被拒</option>
+                            <option value="0">待审核</option>
+                            <option value="1">审核通过</option>
+                        </#select>
+                        <#input id="email" name="电子邮件" value="${item.email}" underline="true"/>
+
                 </div>
 
                 <div class="col-sm-6">
-                            <#select id="status" name="用户状态" underline="true">
-                                <option value="-1">被拒</option>
-                                <option value="0">待审核</option>
-                                <option value="1">审核通过</option>
-                            </#select>
-                            <#input id="email" name="电子邮件" value="${item.email}" underline="true"/>
                             <#input id="idNo" name="证件号" value="${item.idNo}" underline="true"/>
                             <#select id="licenseType" name="证件类型" underline="true">
                                 <option value="1">身份证</option>
@@ -36,7 +40,7 @@
                                 <option value="3">科员</option>
                             </#select>
                             <#input id="phone" name="电话" value="${item.phone}" underline="true"/>
-                            <#select id="sex" name="性别" underline="true">
+                            <#select id="sex" name="性别" underline="true" value="${item.sex}">
                                 <option value="0">女</option>
                                 <option value="1">男</option>
                             </#select>

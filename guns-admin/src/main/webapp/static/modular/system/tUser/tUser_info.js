@@ -119,5 +119,9 @@ TUserInfoDlg.editSubmit = function() {
 }
 
 $(function() {
-
+    //初始化性别选项
+    $("#sex").val($("#sexName").val());
+    $("#departmentId").val($("#departmentName").val());
+    $("#status").val($("#statusName").val());
+    $("#jobId").val($("#jobName").val());
 });
