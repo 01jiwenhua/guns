@@ -19,7 +19,7 @@ TUser.initColumn = function () {
             {title: '状态', field: 'statusName', visible: true, align: 'center', valign: 'middle'},
             {title: '邮箱', field: 'email', visible: true, align: 'center', valign: 'middle'},
             {title: '证件类型', field: 'licenseTypeName', visible: true, align: 'center', valign: 'middle'},
-            {title: '身份证号', field: 'idNo', visible: true, align: 'center', valign: 'middle'},
+            {title: '证件号码', field: 'idNo', visible: true, align: 'center', valign: 'middle'},
             {title: '职务', field: 'jobName', visible: true, align: 'center', valign: 'middle'},
             {title: '联系方式', field: 'phone', visible: true, align: 'center', valign: 'middle'},
             {title: '性别', field: 'sexName', visible: true, align: 'center', valign: 'middle'},
@@ -64,7 +64,7 @@ TUser.openTUserDetail = function () {
     if (this.check()) {
         var index = layer.open({
             type: 2,
-            title: '客户端用户管理详情',
+            title: '用户信息修改',
             area: ['800px', '420px'], //宽高
             fix: false, //不固定
             maxmin: true,
